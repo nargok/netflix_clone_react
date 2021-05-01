@@ -22,8 +22,6 @@ type Movie = {
 export const Row = ({ title, fetchUrl, isLargeRow }: Props) => {
   const [movies, setMovies] = useState<Movie[]>([])
 
-  console.log(title)
-
   useEffect(() => {
     async function fetchData() {
       const request = await axios.get(fetchUrl)
@@ -32,8 +30,6 @@ export const Row = ({ title, fetchUrl, isLargeRow }: Props) => {
     }
     fetchData()
   }, [fetchUrl])
-
-  console.log(movies)
 
   return (
     <div className="Row">
