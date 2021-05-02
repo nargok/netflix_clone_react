@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import Youtube from 'react-youtube'
+import YouTube from 'react-youtube'
 import axios from './../axios'
 import './Row.scss'
 
@@ -54,7 +54,7 @@ export const Row = ({ title, fetchUrl, isLargeRow }: Props) => {
       setTrailerUrl('')
     } else {
       let trailerUrl = await axios.get(
-        `movie/${movie.id}/videos?api_key=${process.env.REACT_APP_API_KEY}`,
+        `/movie/${movie.id}/videos?api_key=${process.env.REACT_APP_API_KEY}`,
       )
       setTrailerUrl(trailerUrl.data.results[0]?.key)
     }
@@ -76,7 +76,7 @@ export const Row = ({ title, fetchUrl, isLargeRow }: Props) => {
           />
         ))}
       </div>
-      {trailerUrl && <Youtube videoId={trailerUrl} opts={opts} />}
+      {trailerUrl && <YouTube videoId={trailerUrl} opts={opts} />}
     </div>
   )
 }
